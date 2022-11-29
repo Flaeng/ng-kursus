@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <tr>
+      <th>Kommune-kode</th>
+      <th>Kommune</th>
+      <th>Regions-kode</th>
+      <th>Region</th>
+      <th>Sidst ændret</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kom of (kommuner$ | async)">
+      <td>
+        {{ kom.kode }}
+      </td>
+      <td>
+        {{ kom.navn }}
+      </td>
+      <td>
+        {{ kom.region.kode }}
+      </td>
+      <td>
+        {{ kom.region.navn }}
+      </td>
+      <td>
+        {{ kom['ændret'] | date:'dd/MM-yyyy' }}
+      </td>
+      <td>
+        <a [routerLink]="'/detaljer/' + kom.kode">Vis detaljer</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

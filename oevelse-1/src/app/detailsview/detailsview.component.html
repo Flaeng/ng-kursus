@@ -1,0 +1,27 @@
+<a href="/">Tilbage</a>
+<div *ngIf="(kommune$ | async) as kom">
+  <div *ngIf="kom === null">
+    Kunne ikke finde kommunen
+  </div>
+  <table *ngIf="kom !== null">
+    <tr>
+      <th>Kode:</th>
+      <td>{{ kom.kode }}</td>
+    </tr>
+    <tr>
+      <th>Navn:</th>
+      <td>{{ kom.navn }}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><b>Region</b></td>
+    </tr>
+    <tr>
+      <th>Kode:</th>
+      <td>{{ kom.region.kode }}</td>
+    </tr>
+    <tr>
+      <th>Navn:</th>
+      <td>{{ kom.region.kode }}</td>
+    </tr>
+  </table>
+</div>
