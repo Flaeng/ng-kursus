@@ -17,7 +17,18 @@
     <label for="input_by">By</label>
     <input id="input_by" formControlName="by" />
     <div *ngIf="form.get('by')?.touched && form.get('by')?.invalid">
-      Du mangler at indtaste din bys navn
+      <div *ngIf="form.get('by')?.hasError('required')">
+        Du mangler at indtaste din bys navn
+      </div>
+      <div *ngIf="form.get('by')?.hasError('minlength')">
+        Bynavn skal være mindst 2 tegn
+      </div>
+      <div *ngIf="form.get('by')?.hasError('maxlength')">
+        Bynavn må maksimalt være 100 tegn
+      </div>
+      <div *ngIf="form.get('by')?.hasError('pattern')">
+        Bynavn må kun indholde bogstaver og mellemrum
+      </div>
     </div>
   </div>
   <div class="form-group">

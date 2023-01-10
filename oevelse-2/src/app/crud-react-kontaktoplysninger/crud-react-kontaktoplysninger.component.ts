@@ -27,6 +27,7 @@ export class CrudReactKontaktoplysningerComponent {
     by: this.fb.control<string>('', {
       validators: [
         Validators.required,
+        Validators.pattern('[A-Za-z ]+'),
         Validators.minLength(2),
         Validators.maxLength(100),
       ]
