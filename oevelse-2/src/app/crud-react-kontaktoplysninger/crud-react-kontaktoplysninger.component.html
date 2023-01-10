@@ -1,0 +1,32 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-group">
+    <label for="input_adresse">Adresse</label>
+    <input id="input_adresse" formControlName="adresse" />
+    <div *ngIf="form.get('adresse')?.touched && form.get('adresse')?.invalid">
+      Du mangler at indtaste din adresse
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="input_husNr">Husnummer</label>
+    <input id="input_husNr" type="number" formControlName="husNr" />
+    <div *ngIf="form.get('husNr')?.touched && form.get('husNr')?.invalid">
+      Du mangler at indtaste dit husnr
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="input_by">By</label>
+    <input id="input_by" formControlName="by" />
+    <div *ngIf="form.get('by')?.touched && form.get('by')?.invalid">
+      Du mangler at indtaste din bys navn
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="input_postnummer">Postnummer</label>
+    <input id="input_postnummer" type="number" formControlName="postNr" />
+    <div *ngIf="form.get('postNr')?.touched && form.get('postNr')?.invalid">
+      Postnummer skal være mellem 0001 og 9999
+    </div>
+  </div>
+  <button type="submit">Gem</button>
+  {{ serverSideError }}
+</form>
