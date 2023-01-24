@@ -1,0 +1,32 @@
+
+{{ count$ | async }}
+<input type="search" #searchInput />
+
+<div *ngIf="kommuneListSearch$ | async as searchResult; else listView">
+  <ng-container
+    *ngTemplateOutlet="actualListView; context: { source: searchResult }"
+  ></ng-container>
+</div>
+
+<ng-template #listView>
+  <div *ngIf="kommuneList$ | async as komList; else spinner">
+    <ng-container
+      *ngTemplateOutlet="actualListView; context: { source: komList }"
+    ></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #actualListView let-source="source">
+  <ul>
+    <li *ngFor="let item of source">
+      {{ item.navn }}
+      ({{ item.kode }})
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #spinner>
+  Loading...
+</ng-template>
+
+<span>Text</span>
